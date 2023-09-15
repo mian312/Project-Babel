@@ -1,0 +1,13 @@
+{
+  "name": "project-babel",
+  "version": "1.0.0",
+  "description": "This is the web-app we are building for Smart India Hackathon 2023",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "cd Backend && npm i && cd ../Frontend && npm i"
+  },
+  "keywords": [],
+  "author": "Milan Dey",
+  "license": "ISC"
+}
