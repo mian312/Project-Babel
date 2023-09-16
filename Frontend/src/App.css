@@ -1,8 +1,6 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.app {
+  width: 98.7vw;
+  height: 100vh;
 }
 
 .logo {
@@ -18,25 +16,30 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.default-layout {
+  display: grid;
+  grid-template-rows: 5rem auto 3rem;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+header {
+  grid-area: header;
+  width: 100%;
 }
 
-.card {
-  padding: 2em;
+main {
+  grid-area: main;
+  height: max-content;
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
-.read-the-docs {
-  color: #888;
+footer {
+  grid-area: footer;
+  background: black;
+  padding: 1rem;
+  color: white;
 }
