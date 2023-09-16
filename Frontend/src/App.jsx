@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Landing from './pages/Landing/Landing.pg';
 import DefaultLayout from './Layout/DefaultLayout';
+import Auth from './pages/Auth/Auth.pg';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <DefaultLayout>
       <Routes>
         <Route path='/' Component={Landing} />
+        <Route path='/auth' Component={Auth}/>
       </Routes>
     </DefaultLayout>
   )
