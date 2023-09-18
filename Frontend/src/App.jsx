@@ -68,7 +68,7 @@ function App() {
           </Route>
 
           {/* <Route path='/auth' element={<Auth isUserAuthenticated={isUserAuthenticated} />} /> */}
-          <Route path='/auth' Component={Auth} />
+          <Route path='/auth' element={<Auth />} />
 
         </Routes>
       </DefaultLayout>
