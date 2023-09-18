@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -7,13 +7,15 @@ import './Auth.pg.css'
 import LoginForm from '../../components/auth/LoginForm.comp';
 import PasswordReset from '../../components/auth/PasswordReset.comp';
 import SignupForm from '../../components/auth/SignupForm.comp';
+import { DataContext } from '../../context/DataProvider';
 
-const Auth = () => {
+const Auth = ({ isUserAuthenticated }) => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [frmLoad, setFrmLoad] = useState("login");
+    const { setAccount } = useContext(DataContext);
 
     // Handle changes made on input
     const handleOnChange = (e) => {
@@ -45,23 +47,23 @@ const Auth = () => {
         e.preventDefault();
         // Setting login credential
         const loginCredentials = { email, password };
-    
+
         try {
             // Fetching responce from 'api/user/login'
             const response = await API.userLogin(loginCredentials);
-    
+
             // On responce being fetched
             if (response.isSuccess) {
                 // Setting sessionStorage value
                 sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
                 sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`);
-                // setAccount({ name: response.data.name, username: response.data.username });
-                // isUserAuthenticated(true)
-
+                setAccount({ name: response.data.name, email: response.data.email });
+                isUserAuthenticated(true)
+                console.log("responce : ", response.data.refreshToken)
                 // Showing user notification
                 toast.success('Successfully Logged In');
                 // Navigating to main page
-                navigate('/app');
+                navigate('/');
             } else {
                 // Handle API error response with a 
                 const errorMessage = response.data.msg || 'Something went wrong! Please try again later.';
@@ -73,7 +75,7 @@ const Auth = () => {
             toast.error('Wrong Email or Password');
         }
     };
-    
+
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -82,7 +84,7 @@ const Auth = () => {
         try {
             // Fetching responce from 'api/user/login'
             const response = await API.userSignup(signupCredentials);
-    
+
             // On responce being fetched
             if (response.isSuccess) {
                 // Showing user notification
@@ -99,7 +101,7 @@ const Auth = () => {
             // Handle network or unexpected errors
             toast.error('Account already exists');
         }
-    };
+    };  
 
     // Handle Password reset form
     const handleOnResetSubmit = (e) => {
