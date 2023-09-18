@@ -9,7 +9,7 @@ import PasswordReset from '../../components/auth/PasswordReset.comp';
 import SignupForm from '../../components/auth/SignupForm.comp';
 import { DataContext } from '../../context/DataProvider';
 
-const Auth = ({ isUserAuthenticated }) => {
+const Auth = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -57,9 +57,9 @@ const Auth = ({ isUserAuthenticated }) => {
                 // Setting sessionStorage value
                 sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
                 sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`);
-                setAccount({ name: response.data.name, email: response.data.email });
-                isUserAuthenticated(true)
-                console.log("responce : ", response.data.refreshToken)
+                setAccount({ name: response.data.user.name, email: response.data.user.email });
+                // isUserAuthenticated(true)
+                console.log("responce : ", response.data)
                 // Showing user notification
                 toast.success('Successfully Logged In');
                 // Navigating to main page

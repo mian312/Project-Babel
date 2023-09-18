@@ -1,22 +1,78 @@
+import { useContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {
   Routes,
-  Route
+  Route,
+  Outlet,
+  Navigate
 } from 'react-router-dom';
 import Landing from './pages/Landing/Landing.pg';
 import DefaultLayout from './Layout/DefaultLayout';
 import Auth from './pages/Auth/Auth.pg';
+import DataProvider, { DataContext } from './context/DataProvider';
+import Home from './pages/Home/Home.pg';
+
+const PrivateRoute = ({ isAuthenticated, ...props }) => {
+  const token = sessionStorage.getItem('accessToken');
+  return isAuthenticated && token ?
+    <>
+      <Outlet />
+    </> : <Navigate replace to='/auth' />
+};
 
 function App() {
+  const [isAuthenticated, isUserAuthenticated] = useState(true);
+  // const { account } = useContext(DataContext);
+
+  useEffect(() => {
+    const checkAuthentication = () => {
+      const token = sessionStorage.getItem('accessToken');
+      if (token) {
+        isUserAuthenticated(true);
+      } else {
+        isUserAuthenticated(false);
+      }
+    };
+
+    // Initial check when the component mounts
+    checkAuthentication();
+
+    const handleStorageChange = (event) => {
+      if (event.key === 'accessToken') {
+        checkAuthentication(); // Recheck authentication on storage change
+      }
+    };
+
+    // Add an event listener to listen for changes in sessionStorage
+    window.addEventListener('storage', handleStorageChange);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+
 
   return (
-    <DefaultLayout>
-      <Routes>
-        <Route path='/' Component={Landing} />
-        <Route path='/auth' Component={Auth}/>
-      </Routes>
-    </DefaultLayout>
+    <DataProvider>
+      <DefaultLayout>
+        <Routes>
+          <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
+            <Route path='/' Component={Landing} />
+          </Route>
+
+          <Route path='/home' element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
+            <Route path='/home' Component={Home} />
+          </Route>
+
+          {/* <Route path='/auth' element={<Auth isUserAuthenticated={isUserAuthenticated} />} /> */}
+          <Route path='/auth' Component={Auth} />
+
+        </Routes>
+      </DefaultLayout>
+    </DataProvider>
   )
 }
 
