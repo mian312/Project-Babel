@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css';
+
 import {
   Routes,
   Route,
@@ -12,6 +14,8 @@ import DefaultLayout from './Layout/DefaultLayout';
 import Auth from './pages/Auth/Auth.pg';
 import DataProvider, { DataContext } from './context/DataProvider';
 import Home from './pages/Home/Home.pg';
+import Blog from './pages/Posts/Blog.pg';
+import CreateBlog from './pages/Posts/CreateBlog.pg';
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   const token = sessionStorage.getItem('accessToken');
@@ -69,7 +73,7 @@ function App() {
 
           {/* <Route path='/auth' element={<Auth isUserAuthenticated={isUserAuthenticated} />} /> */}
           <Route path='/auth' element={<Auth />} />
-
+          <Route path='createPost' Component={CreateBlog}/>
         </Routes>
       </DefaultLayout>
     </DataProvider>

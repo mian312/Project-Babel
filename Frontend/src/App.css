@@ -40,7 +40,7 @@ header {
 
 main {
   grid-area: main;
-  height: max-content;
+  min-height: 80vh;
   flex-grow: 1;
   overflow-y: auto;
 }
