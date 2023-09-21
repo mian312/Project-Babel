@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../../context/DataProvider';
 import ImageOverlay from '../../components/cards/imageOverlay.comp';
 import './Home.pg.css'
-import Categories from '../../components/categories/categories.comp';
+import { API } from '../../services/api';
+import { toast } from 'react-toastify';
 import { categories } from '../../constants/data.js';
 import Post from '../../components/cards/Post.comp';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import SelectCategory from '../../components/cards/SelectCategory.comp';
 
 const imageOverlayStyles = {
@@ -21,10 +22,31 @@ const imageOverlayStyles = {
 };
 
 const Home = () => {
+    const [posts, setPosts] = useState([]);
     const { account, setAccount } = useContext(DataContext);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const category = searchParams.get('category');
 
+    useEffect(() => {
+        const fetchData = async () => {
+            let response;
 
+            if (category === "All") {
+                response = await API.getAllPosts();
+            } else {
+                response = await API.getAllPosts({ category: category });
+            }
+
+            if (response.isSuccess) {
+                setPosts(response.data);
+            } else {
+                toast.error("Couldn't fetch the data");
+            }
+        };
+
+        fetchData();
+    }, [category]);
 
 
 
@@ -37,16 +59,20 @@ const Home = () => {
                 />
             </div>
             <div className='d-flex my-3 mx-2'>
-                <SelectCategory categories={categories}/>
+                <SelectCategory categories={categories} />
                 <Link class="btn btn-primary" to={'/createPost'} role="button" style={{ height: 'max-content' }}>Create Blog</Link>
             </div>
             <div className='container mx-auto d-flex justify-content-evenly'>
-                <div className="row text-center">
-                    {categories.map((category) => (
-                        <div key={category.id} className='col my-2'>
-                            <Post post={category} />
-                        </div>
-                    ))}
+                <div className="card-group row text-center">
+                    {posts.length > 0 ? (
+                        posts.map((category) => (
+                            <div key={category.id} className='col my-2'>
+                                <Post post={category} />
+                            </div>
+                        ))
+                    ) : (
+                        <div className="alert alert-info">No posts available.</div>
+                    )}
                 </div>
             </div>
         </div>

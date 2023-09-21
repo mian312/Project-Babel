@@ -24,7 +24,7 @@ export const API_NOTIFICATION_MESSAGES = {
 
 // API SERVICE URL
 // SAMPLE REQUEST
-// NEED SERVICE CALL: { url: "/api", method: "POST/GET/PUT/DELETE" }
+// NEED SERVICE CALL: { url: "/api", method: "POST/GET/PUT/DELETE", params: true/false (default: false) }
 export const SERVICE_URLS = {
     getUser: { url: '/user', method: 'GET' }, // "email", "password"
     userLogin: { url: '/user/login', method: 'POST' }, // "email", "password"
@@ -33,4 +33,6 @@ export const SERVICE_URLS = {
 
     uploadFile: { url: '/file/upload', method: 'POST' }, // 'milldeware- image File'
     createPost: { url: '/create', method: 'POST' }, // "blog-Post"
+    getAllPosts: {url: '/posts', method: 'GET', params: true},    // '...params'
+    getPostById: {url: '/post', method: 'GET', query: true}, // "post._id"
 }

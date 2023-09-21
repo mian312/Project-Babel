@@ -70,6 +70,7 @@ function App() {
           {/* <Route path='/auth' element={<Auth isUserAuthenticated={isUserAuthenticated} />} /> */}
           <Route path='/auth' element={<Auth />} />
           <Route path='createPost' Component={CreateBlog} />
+          <Route path='/post/:id' element={<Blog/>}/>
         </Routes>
       </DefaultLayout>
     </DataProvider>

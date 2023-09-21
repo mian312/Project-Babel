@@ -17,7 +17,7 @@ const BlogText = ({
                         <label form="floatingTextarea2">Enter Title</label>
                     </div>
                 }
-                {Description ? <h4>{Description}</h4>
+                {Description ? <p>{Description}</p>
                     : <div className="form-floating border m-2">
                         <textarea className="form-control" placeholder="Leave a comment here" id="floatingInputValue2" style={{ height: '40vh', resize: 'none' }} value={Description} onChange={handleOnchange} name='description'></textarea>
                         {Description || <label form="floatingTextarea2">Enter Description</label>}
