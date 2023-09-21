@@ -30,4 +30,7 @@ export const SERVICE_URLS = {
     userLogin: { url: '/user/login', method: 'POST' }, // "email", "password"
     userSignup: { url: '/user/signup', method: 'POST' }, // "name", "email", "password"
     userLogout: { url: '/user/logout', method: 'PUT' }, // "refreshToken"
+
+    uploadFile: { url: '/file/upload', method: 'POST' }, // 'milldeware- image File'
+    createPost: { url: '/create', method: 'POST' }, // "blog-Post"
 }

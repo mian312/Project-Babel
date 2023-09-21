@@ -63,17 +63,13 @@ function App() {
     <DataProvider>
       <DefaultLayout>
         <Routes>
-          <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
-            <Route path='/' Component={Landing} />
-          </Route>
+          <Route path='/' Component={Landing} />
 
-          <Route path='/home' element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
-            <Route path='/home' Component={Home} />
-          </Route>
+          <Route path='/home' Component={Home} />
 
           {/* <Route path='/auth' element={<Auth isUserAuthenticated={isUserAuthenticated} />} /> */}
           <Route path='/auth' element={<Auth />} />
-          <Route path='createPost' Component={CreateBlog}/>
+          <Route path='createPost' Component={CreateBlog} />
         </Routes>
       </DefaultLayout>
     </DataProvider>

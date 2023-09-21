@@ -8,9 +8,10 @@ import { getAccessToken, getRefreshToken, setAccessToken, getType } from '../uti
 const axiosInstance = axios.create({
     baseURL: '/api',
     timeout: 10000,
-    headers: {
-        "content-type": "application/json"
-    }
+    // headers: {
+    //     // "Content-type": ["application/json", "multipart/form-data"],
+    //     'Content-Type': 'multipart/form-data'
+    // }
 });
 
 axiosInstance.interceptors.request.use(
