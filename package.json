@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "cd Backend && npm i && cd ../Frontend && npm i"
+    "setup": "npm install && cd Backend && npm i && cd ../Frontend && npm i",
+    "serve": "concurrently --kill-others-on-fail \"cd frontend && npm run dev\" \"cd backend && npm run start\""
   },
   "keywords": [],
   "author": "Milan Dey",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
 }
