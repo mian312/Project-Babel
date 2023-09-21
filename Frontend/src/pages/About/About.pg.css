@@ -1,0 +1,113 @@
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+.about h3 {
+    font-weight: 400;
+    font-size: 34px;
+    color: #21413c;
+}
+
+.about .icon-box {
+    margin-top: 44px;
+}
+
+.about .icon-box i {
+    font-size: 48px;
+    float: left;
+    color: #1bac91;
+}
+
+.about .icon-box h4 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-left: 60px;
+    color: #21413c;
+}
+
+.about .icon-box p {
+    font-size: 15px;
+    color: #848484;
+    margin-left: 60px;
+}
+
+/*--------------------------------------------------------------
+# F.A.Q
+--------------------------------------------------------------*/
+.faq .faq-list {
+    padding: 0 100px;
+}
+
+.faq .faq-list ul {
+    padding: 0;
+    list-style: none;
+}
+
+.faq .faq-list li+li {
+    margin-top: 15px;
+}
+
+.faq .faq-list li {
+    padding: 20px;
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+}
+
+.faq .faq-list a {
+    display: block;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    padding: 0 30px;
+    outline: none;
+    cursor: pointer;
+}
+
+.faq .faq-list .icon-help {
+    font-size: 24px;
+    position: absolute;
+    right: 0;
+    left: 20px;
+    color: #97cac2;
+}
+
+.faq .faq-list .icon-show,
+.faq .faq-list .icon-close {
+    font-size: 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.faq .faq-list p {
+    margin-bottom: 0;
+    padding: 10px 0 0 0;
+}
+
+.faq .faq-list .icon-show {
+    display: none;
+}
+
+.faq .faq-list a.collapsed {
+    color: #343a40;
+}
+
+.faq .faq-list a.collapsed:hover {
+    color: #1bac91;
+}
+
+.faq .faq-list a.collapsed .icon-show {
+    display: inline-block;
+}
+
+.faq .faq-list a.collapsed .icon-close {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .faq .faq-list {
+        padding: 0;
+    }
+}

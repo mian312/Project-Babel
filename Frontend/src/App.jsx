@@ -16,6 +16,7 @@ import DataProvider, { DataContext } from './context/DataProvider';
 import Home from './pages/Home/Home.pg';
 import Blog from './pages/Posts/Blog.pg';
 import CreateBlog from './pages/Posts/CreateBlog.pg';
+import About from './pages/About/About.pg';
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   const token = sessionStorage.getItem('accessToken');
@@ -66,11 +67,12 @@ function App() {
           <Route path='/' Component={Landing} />
 
           <Route path='/home' Component={Home} />
+          <Route path='/about' Component={About}/>
 
           {/* <Route path='/auth' element={<Auth isUserAuthenticated={isUserAuthenticated} />} /> */}
           <Route path='/auth' element={<Auth />} />
           <Route path='createPost' Component={CreateBlog} />
-          <Route path='/post/:id' element={<Blog/>}/>
+          <Route path='/post/:id' element={<Blog />} />
         </Routes>
       </DefaultLayout>
     </DataProvider>
