@@ -10,7 +10,7 @@ const BlogText = ({
     return (
         <div>
             <form className='container m-2' onSubmit={handlePostSubmit}>
-                {Title ? <h2>{Title}</h2>
+                {Title ? <h2 className='text-center'>{Title}</h2>
                     : <div className="form-floating border m-2">
                         <textarea className="form-control" placeholder="Leave a comment here" id="floatingInputValue1" style={{ height: '10vh', resize: 'none' }}
                             onChange={handleOnchange} name='title'></textarea>

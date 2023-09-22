@@ -4,6 +4,7 @@ import BlogText from '../../components/cards/BlogText.comp';
 import { API } from '../../services/api';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Blog = () => {
   const [post, setPost] = useState({});
@@ -30,10 +31,13 @@ const Blog = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>{post.title}</title>
+      </Helmet>
       <div className='banner object-fit-none' style={{ height: 'max-content' }}>
         <ImageOverlay url={post.picture} />
       </div>
-      <div className='container'>
+      <div className='container my-4'>
         <BlogText
           Title={post.title}
           Description={post.description}

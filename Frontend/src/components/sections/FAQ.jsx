@@ -4,15 +4,13 @@ const FAQ = () => (
     <div className="container">
         <div className="section-title" data-aos="fade-up">
             <h2 className='text-center'>F.A.Q</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                in iste officiis commodi quidem hic quas.</p>
+            <p>It takes great pains to benefit. His needs result from something that actually drives him away. Let them be what they want. Anyone whom anyone desires. And no one who hinders receives the others. Because he should flee in this office of convenience, which is here.</p>
         </div>
 
         <div className="faq-list">
             <ul>
                 <li data-aos="fade-up">
-                     <a data-bs-toggle="collapse" className="collapse"
+                    <a data-bs-toggle="collapse" className="collapse"
                         data-bs-target="#faq-list-1">What is Project-Babel? <i
                             className="bi bi-caret-down icon-show"></i><i className="bi bi-caret-up icon-close"></i></a>
                     <div id="faq-list-1" className="collapse show" data-bs-parent=".faq-list">
@@ -23,7 +21,7 @@ const FAQ = () => (
                 </li>
 
                 <li data-aos="fade-up" data-aos-delay="100">
-                     <a data-bs-toggle="collapse" data-bs-target="#faq-list-2"
+                    <a data-bs-toggle="collapse" data-bs-target="#faq-list-2"
                         className="collapsed">How does Project-Babel work? <i
                             className="bi bi-caret-down icon-show"></i><i className="bi bi-caret-up icon-close"></i></a>
                     <div id="faq-list-2" className="collapse" data-bs-parent=".faq-list">
@@ -34,7 +32,7 @@ const FAQ = () => (
                 </li>
 
                 <li data-aos="fade-up" data-aos-delay="200">
-                     <a data-bs-toggle="collapse" data-bs-target="#faq-list-3"
+                    <a data-bs-toggle="collapse" data-bs-target="#faq-list-3"
                         className="collapsed">How can I submit my own project to Project-Babel? <i
                             className="bi bi-caret-down icon-show"></i><i className="bi bi-caret-up icon-close"></i></a>
                     <div id="faq-list-3" className="collapse" data-bs-parent=".faq-list">
@@ -45,7 +43,7 @@ const FAQ = () => (
                 </li>
 
                 <li data-aos="fade-up" data-aos-delay="300">
-                     <a data-bs-toggle="collapse" data-bs-target="#faq-list-4"
+                    <a data-bs-toggle="collapse" data-bs-target="#faq-list-4"
                         className="collapsed">What are the benefits of submitting my project to Project-Babel? <i
                             className="bi bi-caret-down icon-show"></i><i className="bi bi-caret-up icon-close"></i></a>
                     <div id="faq-list-4" className="collapse" data-bs-parent=".faq-list">
@@ -56,7 +54,7 @@ const FAQ = () => (
                 </li>
 
                 <li data-aos="fade-up" data-aos-delay="400">
-                     <a data-bs-toggle="collapse" data-bs-target="#faq-list-5"
+                    <a data-bs-toggle="collapse" data-bs-target="#faq-list-5"
                         className="collapsed">Is Project-Babel free to use? <i
                             className="bi bi-caret-down icon-show"></i><i className="bi bi-caret-up icon-close"></i></a>
                     <div id="faq-list-5" className="collapse" data-bs-parent=".faq-list">

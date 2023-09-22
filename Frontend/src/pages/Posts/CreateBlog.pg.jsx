@@ -9,6 +9,7 @@ import SelectCategory from '../../components/cards/SelectCategory.comp';
 import { toast } from 'react-toastify';
 import FileBase64 from 'react-file-base64';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const initialPost = {
     title: '',
@@ -23,6 +24,7 @@ const CreateBlog = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const [loading, isLoading] = useState(false);
     const [post, setPost] = useState(initialPost);
     const [file, setFile] = useState(null);
     const { account } = useContext(DataContext);
@@ -108,6 +110,9 @@ const CreateBlog = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Create Blog - Project-Babel</title>
+            </Helmet>
             <div className='banner object-fit-none' style={{ height: 'max-content' }}>
                 <ImageOverlay url={url} />
             </div>

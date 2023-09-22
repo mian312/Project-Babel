@@ -8,6 +8,7 @@ import { categories } from '../../constants/data.js';
 import Post from '../../components/cards/Post.comp';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import SelectCategory from '../../components/cards/SelectCategory.comp';
+import { Helmet } from 'react-helmet-async';
 
 const imageOverlayStyles = {
     position: 'absolute',
@@ -52,6 +53,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Home - Project-Babel</title>
+            </Helmet>
             <div className='banner'>
                 <ImageOverlay
                     title='Welcome to Project-Babel'

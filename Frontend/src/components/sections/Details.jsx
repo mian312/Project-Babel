@@ -4,10 +4,11 @@ const Details = () => (
     <div className="container">
         <div className="row">
             <div className="col-xl-6 col-lg-7" data-aos="fade-right">
-                <img src='../../../src/images/about-img.jpg' className="img-fluid" alt="" />
+                <img src='../../../src/images/about-img.jpeg' className="img-fluid" alt="" />
             </div>
             <div className="col-xl-6 col-lg-5 pt-5 pt-lg-0">
                 <h3 data-aos="fade-up">Welcome to Project-Babel</h3>
+                <br />
                 <p data-aos="fade-up">
                     Welcome to Project-Babel, the premier online platform for connecting university projects from all over the world.
                     We believe that university projects are a breeding ground for innovation and creativity, and that they have the potential

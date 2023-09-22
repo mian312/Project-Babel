@@ -118,7 +118,7 @@ const Auth = () => {
 
     return (
         <div className="auth-page">
-            <Helmet><title>Login to Continue</title></Helmet>
+            <Helmet><title>Login - Project-Babel</title></Helmet>
             <div className="form-box jumbotron">
                 {frmLoad === "login" && (
                     <LoginForm
