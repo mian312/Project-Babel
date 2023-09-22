@@ -37,18 +37,36 @@ const CreateBlog = () => {
 
     const savePost = async (e) => {
         // Prevent default reload on form submit
-        e.preventDefault()
-
-        // Get response from the API
-        const response = await API.createPost(post);
-        // Handle response
-        if (response.isSuccess) {
-            toast.success("Successfully Created Post")
-            navigate('/home');
-        } else {
-            toast.error("Couldn't Create the Post! \nPlease try again later")
+        e.preventDefault();
+        try {
+            if (!post?.picture) {
+                toast.warn("Please provide an image for your post");
+            } else if (!post?.title) { // Change .length() to ! to check if title is falsy
+                toast.warn("Please provide a suitable title for the post");
+            } else if (!post?.description) { // Change .length() to ! to check if description is falsy
+                toast.warn("Please provide a suitable description for the post");
+            } else {
+                // All required fields are available, call the API
+                try {
+                    // Get response from the API
+                    const response = await API.createPost(post);
+                    // Handle response
+                    if (response.isSuccess) {
+                        toast.success("Successfully Created Post");
+                        navigate('/home?category=All');
+                    } else {
+                        toast.error("Couldn't Create the Post! \nPlease try again later");
+                    }
+                } catch (error) {
+                    toast.error(error);
+                }
+            }
+        } catch (error) {
+            toast.error("Something went wrong! Please try again later");
+            navigate('/home?category=All');
         }
-    }
+    };
+
 
     // Handle change in select file
     const handleFileChange = (event) => {
@@ -68,7 +86,7 @@ const CreateBlog = () => {
                 const response = await API.uploadFile(data);
 
                 // Assuming the response contains the URL or relevant data
-                const imageUrl = response?.data?.image;
+                const imageUrl = response?.data?.image || url;
 
                 return imageUrl;
             } catch (error) {
@@ -105,6 +123,9 @@ const CreateBlog = () => {
         console.log("post \n", post);
     }, [file, location.search]);
 
+    useEffect(() => {
+        !sessionStorage.getItem('accessToken') && navigate('/auth') && toast.warn('Pease Login to Continue')
+    }, [account, []])
 
 
 
@@ -113,7 +134,7 @@ const CreateBlog = () => {
             <Helmet>
                 <title>Create Blog - Project-Babel</title>
             </Helmet>
-            <div className='banner object-fit-none' style={{ height: 'max-content' }}>
+            <div className='banner object-fit-none'>
                 <ImageOverlay url={url} />
             </div>
             <div className='text-center '>
@@ -128,9 +149,6 @@ const CreateBlog = () => {
                     style={{ display: "none" }}
                     onChange={handleFileChange}
                 />
-                <label className='btn btn-outline-success btn-lg m-2'>
-                    <i className="bi bi-pen-fill"></i>
-                </label>
             </div>
             <div className='container'>
                 <SelectCategory categories={categories} />

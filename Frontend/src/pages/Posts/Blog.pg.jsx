@@ -34,7 +34,7 @@ const Blog = () => {
       <Helmet>
         <title>{post.title}</title>
       </Helmet>
-      <div className='banner object-fit-none' style={{ height: 'max-content' }}>
+      <div className='banner object-fit-none'>
         <ImageOverlay url={post.picture} />
       </div>
       <div className='container my-4'>

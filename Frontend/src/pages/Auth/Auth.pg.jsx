@@ -63,7 +63,7 @@ const Auth = () => {
                 // Showing user notification
                 toast.success('Successfully Logged In');
                 // Navigating to main page
-                navigate('/');
+                navigate('/home');
             } else {
                 // Handle API error response with a 
                 const errorMessage = response.data.msg || 'Something went wrong! Please try again later.';

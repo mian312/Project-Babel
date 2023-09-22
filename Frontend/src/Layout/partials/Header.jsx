@@ -35,6 +35,7 @@ const Header = () => {
 
                 // Replace this condition with actual API response handling
                 // if (response.status === 200) {
+                setAccount({});
                 setToken(false);
 
                 // Remove the token from session storage
