@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet-async';
 const Blog = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
+  const [stu, setStu] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +26,12 @@ const Blog = () => {
 
   // Use another useEffect to log the post when it changes
   useEffect(() => {
-    console.log(post);
+    const userIs = localStorage.getItem('role');
+    if (userIs === 'student') {
+      setStu(true)
+    } else {
+      setStu(false)
+    }
   }, [post]);
 
 
@@ -43,6 +49,18 @@ const Blog = () => {
           Description={post.description}
         />
       </div>
+      {sessionStorage.getItem('refreshToken') && <div className='text-center my-2'>
+        {
+          stu ? <button type="button" className="btn btn-outline-primary"
+            onClick={() => toast.info("Details has been sent to your email")}
+          >
+            Download the Project
+          </button>
+            : <button type="button" className="btn btn-outline-success"
+              onClick={() => toast.warn("This is still under deveopement progress")}
+            >Check Plagarism</button>
+        }
+      </div>}
     </div>
   )
 }
